@@ -8,39 +8,39 @@
 # 使用
 - ## 图片缓存
    导入组件，批量替换page目录下的image到jy-image  
-   `<jy-image :src="url" :placeholder="url" :complete="complete"></jy-image>`
+   ```html
+   <jy-image :src="url" :placeholder="url" :complete="complete"></jy-image>
+   ```
 
 - ## 数据缓存
-  - ### 导入  
-     `import JyReq from '@/components/jy-image/libs/jy-request'`
   - ### 初始化    
-     ```
-     const req = new JyReq({})
+     ```js
+     import JyReq from '@/components/jy-image/libs/jy-request'
+
      export const req = new JyReq({
-         host: 'host', //接口域名
-	 //...更多见本文档props列表
+         host: 'host', //见本文档props列表
      })
      ```
   - ### 缓存数据
      #### 1. 简单例子
-     ```
+     ```js
      req.get('api').back(resp=>{}).exec()
      ```
      #### 2. 传递数据和请求头
-     ```
+     ```js
      req.post('api').header({}).send({}).back(resp=>{}).exec()
      ```
      #### 3. 额外的缓存  
      由于默认只对未传参的请求进行缓存，如果需要缓存则调用cache()方法
-     ```
+     ```js
      req.get('api').back(resp=>{}).cache().exec() 
-     //或通过cacheList属性进行配置
+     //也可以通过cacheList属性进行配置
      req.opt({
          cacheList: ['api1', 'api2']
      })
      ```
      #### 4. Promise方式
-     ```
+     ```js
      async fetch() {
          const {code, msg} = await req.post('api').send({}).cache().exec()
      }
