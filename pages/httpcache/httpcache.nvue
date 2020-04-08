@@ -1,0 +1,111 @@
+<template>
+	<view class="httpcache">
+		<list class="list" :loadmoreoffset="30" @loadmore="loadMore">
+			<refresh class="refresh" @refresh="onRefresh" :display="refreshing ? 'show' : 'hide'">
+				<text class="refresh-title">下拉加载在线数据</text>
+				<loading-indicator class="refresh-indicator"></loading-indicator>
+			</refresh>
+			<cell v-for="(item, index) in list" :key="index">
+				<view class="item">
+					<jy-image class="image" :src="item.image" placeholder="/static/logo.png"></jy-image>
+					<view style="flex-direction: column; flex: 1;">
+						<text class="title">{{item.title}}</text>
+						<text class="intro">{{item.passtime}}</text>
+					</view>
+				</view>
+			</cell>
+		</list>
+	</view>
+</template>
+
+<script>
+	import { req } from '@/common/common'
+	export default {
+		data() {
+			return {
+				list: [],
+				page: 1,
+				refreshing: false
+			}
+		},
+		onLoad() {
+			this.fetchNews()
+		},
+		onNavigationBarButtonTap() {
+			uni.navigateTo({
+				url: '/pages/httpcache/offline'
+			})
+		},
+		methods: {
+			onRefresh() {
+				this.page = 1
+				this.fetchNews()
+				this.refreshing = true
+				setTimeout(() => {
+					this.refreshing = false
+				}, 3000)
+			},
+			loadMore() {
+				this.page++
+				this.fetchNews()
+			},
+			async fetchNews() {
+				// req.post('getWangYiNews').send({
+				// 	page: this.page,
+				// 	count: 20
+				// }).back(resp=>{
+				// 	const {code, msg, result} = resp
+				// 	this.list = this.list.concat(result)
+				// }).cache().exec()
+				const {code, msg, result} = await req.post('getWangYiNews').send({
+					page: this.page,
+					count: 20
+				}).cache().exec()
+				this.list = this.list.concat(result)
+			}
+		}
+	}
+</script>
+
+<style>
+	.httpcache {
+		flex: 1;
+	}
+	.item {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20rpx;
+	}
+	.image {
+		width: 100rpx;
+		height: 100rpx;
+	}
+	.title {
+		font-size: 32rpx;
+		color: #333;
+		flex-wrap: wrap;
+		padding: 10rpx;
+	}
+	.intro {
+		font-size: 24rpx;
+		color: #999;
+		padding: 10rpx;
+	}
+	.refresh {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+	}
+	.refresh-title {
+		text-align: center;
+		font-size: 30rpx;
+		color: #999;
+	}
+	.indicator {
+		height: 60px;
+		width: 60px;
+	}
+</style>

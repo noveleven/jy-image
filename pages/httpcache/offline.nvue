@@ -1,0 +1,75 @@
+<template>
+	<view class="offline">
+		<list>
+			<cell v-for="(item, index) in list" :key="index">
+				<view class="item">
+					<jy-image class="image" :src="item.image" placeholder="/static/logo.png"></jy-image>
+					<view style="flex-direction: column; flex: 1;">
+						<text class="title">{{item.title}}</text>
+						<text class="intro">{{item.passtime}}</text>
+					</view>
+				</view>
+			</cell>
+		</list>
+	</view>
+</template>
+
+<script>
+	import { req } from '@/common/common'
+	req.opt({
+		offline: true
+	})
+	export default {
+		data() {
+			return {
+				list: []
+			}
+		},
+		onLoad() {
+			this.fetchNews()
+		},
+		methods: {
+			async fetchNews() {
+				// req.post('getWangYiNews').send({
+				// 	page: this.page,
+				// 	count: 20
+				// }).back(resp=>{
+				// 	const {code, msg, result} = resp
+				// 	this.list = this.list.concat(result)
+				// }).cache().exec()
+				const {code, msg, result} = await req.post('getWangYiNews').send({
+					page: this.page,
+					count: 20
+				}).cache().exec()
+				this.list = this.list.concat(result)
+			}
+		}
+	}
+</script>
+
+<style>
+	.offline {
+		flex: 1;
+	}
+	.item {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20rpx;
+	}
+	.image {
+		width: 100rpx;
+		height: 100rpx;
+	}
+	.title {
+		font-size: 32rpx;
+		color: #333;
+		flex-wrap: wrap;
+		padding: 10rpx;
+	}
+	.intro {
+		font-size: 24rpx;
+		color: #999;
+		padding: 10rpx;
+	}
+</style>

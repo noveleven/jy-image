@@ -1,0 +1,49 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "JyImage",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "none",
+							"fontSize": "12",
+							"text": "数据缓存",
+							"width": "auto"
+						}]
+					}
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/httpcache/httpcache",
+            "style" : {
+				"navigationBarTitleText": "数据缓存",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "none",
+							"fontSize": "12",
+							"text": "查看缓存",
+							"width": "auto"
+						}]
+					}
+				}
+			}
+        }
+		,{
+		    "path" : "pages/httpcache/offline",
+		    "style" : {
+				"navigationBarTitleText": "已缓存内容"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"animationType": "pop-in"
+	}
+}
