@@ -29,10 +29,10 @@
   req.post('api').header({}).send({}).back(resp=>{}).exec()
   ```
   #### 4. 额外的缓存  
-  由于默认只对未传参的请求进行缓存，如果需要缓存则调用cache()方法
+  由于默认只对未传参的请求进行缓存，如果需要缓存带参请求则需要调用cache()方法或者通过cacheList属性进行设置
   ```js
   req.get('api').back(resp=>{}).cache().exec() 
-  //也可以通过cacheList属性进行配置
+  //也可以通过cacheList属性来实现带参请求的缓存
   req.opt({
       cacheList: ['api1', 'api2']
   })
