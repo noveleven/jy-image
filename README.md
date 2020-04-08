@@ -7,7 +7,7 @@
 
 # 使用
 - ## 图片缓存
-   导入组件，批量替换page目录下的image到jy-image  
+   导入组件，将page目录下的image标签批量替换到jy-image标签，即可实现图片缓存  
    ```html
    <jy-image :src="url" :placeholder="url" :complete="complete"></jy-image>
    ```
