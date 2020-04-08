@@ -20,15 +20,15 @@
       host: 'host', //见本文档props列表
   })
   ```
-  #### 1. 请求并缓存
+  #### 2. 请求并缓存
   ```js
   req.get('api').back(resp=>{}).exec()
   ```
-  #### 2. 传递数据和请求头
+  #### 3. 传递数据和请求头
   ```js
   req.post('api').header({}).send({}).back(resp=>{}).exec()
   ```
-  #### 3. 额外的缓存  
+  #### 4. 额外的缓存  
   由于默认只对未传参的请求进行缓存，如果需要缓存则调用cache()方法
   ```js
   req.get('api').back(resp=>{}).cache().exec() 
@@ -37,13 +37,13 @@
       cacheList: ['api1', 'api2']
   })
   ```
-  #### 4. Promise方式
+  #### 5. Promise方式
   ```js
   async fetch() {
       const {code, msg} = await req.post('api').send({}).cache().exec()
   }
   ```
-  #### 5. Method列表
+  #### 6. Method列表
   - 请求方式  
   `post('')` `get('')` `put('')` 等  
   - 请求数据  
@@ -63,7 +63,7 @@
   - 设置本次请求props并执行请求  
   `exec({})`  
 
-  #### 6. Props列表
+  #### 7. Props列表
   - `host:`  
   - `header:`  
   - `timeout:`  
