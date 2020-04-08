@@ -62,7 +62,7 @@
      `abort()`
      - 设置全局props  
      `opt({})`
-     - 设置本次请求props  
+     - 设置本次请求props并执行请求
      `exec({})`  
 
      #### 6. Props列表
