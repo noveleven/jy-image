@@ -1,11 +1,11 @@
-## jy-image是什么?  
+# jy-image是什么
 * jy-image是一个uni-app缓存组件
 
-## jy-image特性
+# jy-image特性
 * 支持图片缓存及placeholer
 * 支持数据缓存
 
-## 使用
+# 使用
 - ## 图片缓存
    导入组件，批量替换page目录下的image到jy-image  
    `<jy-image :src="url" :placeholder="url" :complete="complete"></jy-image>`
