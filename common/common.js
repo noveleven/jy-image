@@ -1,4 +1,4 @@
-import JyReq from '@/components/jy-image/libs/jy-request'
+import {JyReq} from 'jy-request'
 export const req = new JyReq({
 	host: 'https://api.apiopen.top/', //接口域名
 	verbose: true, //显示打印信息

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-	import {imageCache} from './libs/jy-cache'
+	import { imageCache } from 'jy-request'
 	export default {
 		name: 'JyImage',
 		props: {

@@ -31,7 +31,7 @@
 		'http://t9.baidu.com/it/u=4169540006,4220376401&fm=79&app=86&f=JPEG?w=1000&h=1500',
 		'http://t7.baidu.com/it/u=1179872664,290201490&fm=79&app=86&f=JPEG?w=1280&h=854'
 	]
-	import {cacheSize, cleanCache} from '@/components/jy-image/libs/jy-cache'
+	import {cacheSize, cleanCache} from 'jy-request'
 	export default {
 		data() {
 			return {
