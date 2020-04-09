@@ -10,7 +10,7 @@
    npm i jy-request
    ```
 - ## 图片缓存
-   导入组件，将page目录下的image标签批量替换到jy-image标签，即可实现图片缓存  
+   将[jy-image](https://github.com/noveleven/jy-image/releases/download/1.0.0/jy-image.zip)放入components目录，再将page目录下的image标签批量替换到jy-image标签，即可实现图片缓存  
    ```html
    <jy-image :src="url" :placeholder="url" :complete="complete"></jy-image>
    ```
