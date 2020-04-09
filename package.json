@@ -1,0 +1,23 @@
+{
+  "name": "jy-image",
+  "version": "1.0.0",
+  "description": "* jy-image是一个uni-app缓存组件",
+  "main": "main.js",
+  "dependencies": {
+    "jy-request": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noveleven/jy-image.git"
+  },
+  "author": "ljy_1269@163.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noveleven/jy-image/issues"
+  },
+  "homepage": "https://github.com/noveleven/jy-image#readme"
+}
