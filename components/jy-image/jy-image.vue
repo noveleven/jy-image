@@ -44,10 +44,6 @@
 				type: String,
 				default: ''
 			},
-			complete: {
-				type: Function,
-				default: null
-			}
 		},
 		watch: {
 			src: function(n, o) {
@@ -67,7 +63,7 @@
 				if (src.match(/(http:|https:)/)) {
 					const native = imageCache(src, e=>{
 						this.native = e
-						this.complete && this.complete(e)
+						this.$emit("loadCompleted", e)
 					})
 					if (native != src)
 						this.native = native

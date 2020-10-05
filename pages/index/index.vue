@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="row">
 			<view v-for="(src, index) in testSrc" :key="index">
-				<jy-image mode="aspectFill" :src="src" placeholder="/static/logo.png" :complete="loadCompleted"></jy-image>
+				<jy-image mode="aspectFill" :src="src" placeholder="/static/logo.png" @loadCompleted="loadCompleted"></jy-image>
 			</view>
 		</view>
 		<view class="row">
@@ -51,8 +51,7 @@
 		},
 		methods: {
 			loadCompleted(e) {
-				console.log(e);
-				this.output += (e+'\n')
+				this.output += (e.substring(0,40)+'\n')
 				if (++this.count === testSrc.length) {
 					uni.showToast({
 						title: '加载完毕'
@@ -60,7 +59,6 @@
 					this.count = 0
 					this.getSize()
 				}
-					
 			},
 			getSize() {
 				cacheSize(size=>{
@@ -69,7 +67,7 @@
 			},
 			makeClean() {
 				cleanCache({
-					except: ['do_not_clean', 'this_key', 'and_this_key', 'etc...'],
+					except: ['do_not_clean', 'etc...'],
 					complete: ()=> {
 						this.getSize()
 						this.testSrc = []
